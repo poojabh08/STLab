@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function isNumberKey(evt){
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
+        
+    <input id="num1" type="number" onkeypress="return isNumberKey(event)"/>
+        
+    <!-- <input type="number" id="num1" required> -->
+    <input type="number" id="num2" onkeypress="return isNumberKey(event)">
+    <button onclick="displayGCD()">Submit</button>
+    <!-- <input type="reset" value="Reset"> -->
+    <button id="b1" onclick="document.getElementById('num1').value = '',document.getElementById('num2').value = ''">Clear</button>
+   
+    <p id="demo"></p>
+    
+    <script>
+        function displayGCD(){
+            var y1 = document.getElementById("num1").required; 
+            var x1 = document.getElementById("num2").required; 
+            var y=document.getElementById("num1").value;
+            var x=document.getElementById("num2").value;
+            var t;
+            if(x==0 || y==0)
+            {
+                document.getElementById("demo").innerHTML=("Cannot find GCD");
+            }
+            if(x>y){
+                t=y;
+                y=x;
+                x=t;
+            }
+            while(y) {
+            t = y;
+            y = x % y;
+            x = t; 
+        }
+        document.getElementById("demo").innerHTML=("GCD is "+x);
+        }
+    </script>
+</body>
+</html>
